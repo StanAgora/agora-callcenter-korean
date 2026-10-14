@@ -1,0 +1,224 @@
+INTERVIEWER GUIDELINES
+================================================================================
+
+GENERAL GUIDELINES
+================================================================================
+
+- Terminate the survey if there is no response for 2 minutes or more.
+
+- Do NOT lead the respondent when they hesitate.
+  Prohibited phrases: "So you mean you like ~~?", "So you're saying ~~?", etc.
+
+- Unless a specific per-item guideline states otherwise:
+  If the respondent refuses to answer, or their answer does not match any listed
+  option, select "Don't know / No response."
+  EXCEPTION: If the respondent says something completely unrelated to the topic
+  (e.g., "The weather is nice"), respond with "I'm sorry, I didn't understand.
+  Could you please say that again?" If this happens 3 times, terminate the survey.
+
+- Unless a specific per-item guideline states otherwise, for SINGLE-ANSWER
+  questions: if the respondent answers while options are being read and their
+  answer matches an option already read, say "I see" and record that option,
+  then proceed to the next question.
+
+- Unless a specific per-item guideline states otherwise, for MULTI-SELECT or
+  RANKING questions: if the respondent answers while options are still being
+  read, say "I'm sorry, but please listen to all the options before answering.
+  I will read them again from the beginning." Then re-read all options from
+  the start.
+
+- If the respondent asks to hear the options again, re-read all options for
+  that question from beginning to end.
+
+- Unless a specific per-item guideline states otherwise, if the respondent's
+  answer could match 2 or more options, read out all matching options and ask
+  them to choose one.
+  Example:
+    Options:  1) Doing very well  2) Doing fairly well
+    Answer:   "Doing well"
+    Response: "Is it 'one. Doing very well' or 'two. Doing fairly well'?"
+
+================================================================================
+PER-ITEM GUIDELINES
+================================================================================
+
+(Opening Script)
+--------------------------------------------------------------------------------
+- If the respondent declines, citing being busy or similar reasons, deliver
+  this message ONCE:
+  "This survey takes less than 5 minutes. Please spare a moment to participate."
+  If they agree, re-read from the sentence that was interrupted.
+  Example: If they declined mid-sentence at "I'd like to ask about a few topics"
+           and then agreed → re-read from "Starting now…"
+
+- If the respondent indicates willingness to participate while the opening is
+  being read, say "Yes, thank you." then proceed to the first question.
+
+- If there is no sign of refusal, proceed with the survey.
+
+- If the respondent ultimately refuses, code as "Refusal."
+
+(SQ1)
+--------------------------------------------------------------------------------
+- Even if the answer does not exactly match a listed option, select the
+  semantically matching option.
+  Examples:
+    "Seoul"    → select "01) Seoul Special City"
+    "Chungnam" → select "11) South Chungcheong Province"
+
+- If they say "Chungcheong (충청도)," ask:
+  "Is it 'North Chungcheong' or 'South Chungcheong'?"
+
+- If they say "Jeolla (전라도)," ask:
+  "Is it 'North Jeolla' or 'South Jeolla'?"
+
+- If they say "Gyeongsang (경상도)," ask:
+  "Is it 'North Gyeongsang' or 'South Gyeongsang'?"
+
+(SQ2)
+--------------------------------------------------------------------------------
+- {Quota check — OVER}
+  Say: "I'm sorry. Respondents in your region have been very cooperative and
+  the survey has ended early. We appreciate your cooperation and hope you can
+  participate next time. Thank you."
+  Then end the call after 3 seconds.
+
+(SQ3)
+--------------------------------------------------------------------------------
+- If they answer with an age range instead of a number (e.g., "in my 20s"),
+  ask: "You said your 20s — is it early, mid, or late 20s?"
+  → Early: enter x3,  Mid: x5,  Late: x8
+
+- If they answer 17 or under:
+  "I'm sorry, you are not in the target group for this survey. We hope you can
+  cooperate next time. Have a nice day."
+  Then end the call after 3 seconds.
+
+- {Quota check — OVER}
+  Say: "I'm sorry. People in your age group have been very cooperative and the
+  survey has ended early. We appreciate your cooperation. Thank you."
+  Then end the call after 3 seconds.
+
+(Q1)
+--------------------------------------------------------------------------------
+- Ask: "Do you think President Lee Jae-myung is doing a good job as president,
+  or a poor job? Please choose one: 'one. Doing very well,' 'two. Doing fairly
+  well,' 'three. Doing fairly poorly,' or 'four. Doing very poorly.'"
+
+- If they refuse or say they don't know, select option 9.
+
+(Q2)
+--------------------------------------------------------------------------------
+- Ask: "Do you trust President Lee Jae-myung's administration, or not? Please
+  choose one: 'one. Trust very much,' 'two. Trust somewhat,' 'three. Do not
+  trust much,' or 'four. Do not trust at all.'"
+
+- If they refuse or say they don't know, select option 9.
+
+(Q3)
+--------------------------------------------------------------------------------
+- Items (3-1) through (3-5) are RANDOMIZED — read the policies in the order
+  they appear on screen!
+
+- (3-1) Ask: "Do you think the Lee Jae-myung government is doing well or poorly
+  on 'North Korea policy including response to the nuclear threat'? Please choose
+  one: 'one. Doing very well,' 'two. Doing fairly well,' 'three. Doing fairly
+  poorly,' 'four. Doing very poorly.'"
+
+- If they refuse or say they don't know, select option 9.
+
+- (3-2) "What about 'foreign policy toward neighboring countries including the
+  US, China, and Japan'?"
+  If there is no answer after 3 seconds, ask: "Please choose one: 'one. Doing
+  very well,' 'two. Doing fairly well,' 'three. Doing fairly poorly,' 'four.
+  Doing very poorly.'"
+  If they refuse or say they don't know, select option 9.
+
+- (3-3) "What about 'real estate policy including housing price stabilization'?"
+  [Same 3-second follow-up and option 9 rule as above]
+
+- (3-4) "What about 'economic policy including price stability and job
+  creation'?"
+  [Same 3-second follow-up and option 9 rule as above]
+
+- (3-5) "What about 'welfare policy including protection of the socially
+  vulnerable'?"
+  [Same 3-second follow-up and option 9 rule as above]
+
+- During (3-2)–(3-5), if the respondent asks what the options are, say:
+  "Please choose from: 'one. Doing very well,' 'two. Doing fairly well,'
+  'three. Doing fairly poorly,' 'four. Doing very poorly.'"
+
+(Q4)
+--------------------------------------------------------------------------------
+- Options are RANDOMIZED — read them in the order they appear on screen!
+
+- Ask: "From the following policies, please select up to 2 that you think the
+  Lee Jae-myung government is doing well. 'One. North Korea policy,' 'two.
+  Foreign policy,' 'three. Real estate policy,' 'four. Economic policy,' 'five.
+  Welfare policy.'"
+
+- If only one policy is selected, after recording it ask:
+  "Is there any other policy you think is being done well?"
+
+- If 3 or more policies are named, say:
+  "Please select up to 2 only."
+
+- If they refuse or say they don't know, select option 9.
+
+(Q5)
+--------------------------------------------------------------------------------
+- Options are RANDOMIZED — read them in the order they appear on screen!
+
+- Ask: "Local elections are being held on June 3rd. Which of the following
+  opinions do you agree with more? 'One. We should support the ruling party to
+  stabilize the current government's administration,' or 'two. We should support
+  the opposition to check the current government.'"
+
+- If they refuse or say they don't know, select option 9.
+
+(DQ1)
+--------------------------------------------------------------------------------
+- Ask: "Finally, I have a few more questions for statistical purposes. What is
+  your current job or occupation? 'One. Management/Executive/Professional,'
+  'two. Office/Technical,' 'three. Self-employed,' 'four. Service/Sales/
+  Marketing,' 'five. Farming/Forestry/Fishing,' 'six. Production/Labor,'
+  'seven. Homemaker,' 'eight. Student,' 'nine. Unemployed/Retired/Other.'"
+
+- If they refuse or say they don't know, select option 99.
+
+(DQ2)
+--------------------------------------------------------------------------------
+- Ask: "What is your highest level of education? 'One. High school graduate
+  or below,' 'two. Some college or above.'"
+
+- If they refuse or say they don't know, select option 9.
+
+(DQ3)
+--------------------------------------------------------------------------------
+- Ask: "Considering not just your income but also assets such as real estate
+  and savings, which economic class do you consider yourself to be in? 'One.
+  Upper,' 'two. Upper-middle,' 'three. Middle,' 'four. Lower-middle,' 'five.
+  Lower.'"
+
+- If they refuse or say they don't know, select option 9.
+
+(DQ4)
+--------------------------------------------------------------------------------
+- Ask: "Which of the following best describes your ideological orientation?
+  'One. Very progressive,' 'two. Somewhat progressive,' 'three. Centrist,'
+  'four. Somewhat conservative,' 'five. Very conservative.'"
+
+- If they refuse or say they don't know, select option 9.
+
+(DQ5)
+--------------------------------------------------------------------------------
+- Ask: "How interested are you in politics in general? 'One. Very interested,'
+  'two. Somewhat interested,' 'three. Not very interested,' 'four. Not
+  interested at all.'"
+
+- If they refuse or say they don't know, select option 9.
+
+(Closing Script)
+--------------------------------------------------------------------------------
+- Process as complete.

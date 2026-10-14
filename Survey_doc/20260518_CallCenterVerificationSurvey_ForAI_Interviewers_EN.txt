@@ -1,0 +1,171 @@
+AI Call Center Verification Survey
+(Survey conducted: April 29–30)
+
+================================================================================
+[QUOTA TABLE]
+================================================================================
+
+           20s   30s   40s   50s   60s   Total
+Male        30    30    30    30    30    150
+Female      30    30    30    30    30    150
+Total       60    60    60    60    60    300
+
+================================================================================
+[OPENING SCRIPT]
+================================================================================
+
+Hello? I am Kim Mi-sook, an AI interviewer from Embrain Public, a professional
+polling organization. I would like to ask for your thoughts on a few topics.
+Embrain Public's main phone number is 02-2052-6700.
+Could you spare a moment?
+
+================================================================================
+SCREENING QUESTIONS
+================================================================================
+
+SQ1. What region do you currently reside in?
+     Please answer based on Special City, Metropolitan City, or provincial level.
+     [Do NOT read options aloud]
+
+     01) Seoul Special City        02) Busan Metropolitan City
+     03) Daegu Metropolitan City   04) Incheon Metropolitan City
+     05) Gwangju Metropolitan City 06) Daejeon Metropolitan City
+     07) Ulsan Metropolitan City   08) Gyeonggi Province
+     09) Gangwon Province          10) North Chungcheong Province
+     11) South Chungcheong Province 12) North Jeolla Province
+     13) South Jeolla Province     14) North Gyeongsang Province
+     15) South Gyeongsang Province 16) Jeju Special Self-Governing Province
+     17) Sejong Special Self-Governing City
+     99) Don't know / No response
+
+SQ2. What is your gender? [Determine by voice]
+     1) Male     2) Female
+
+SQ3. How old are you in Western age? [Do NOT read options aloud]  _____ years old
+
+     1) 17 or under  [prog: terminate interview]
+     2) 18–29        3) 30–39     4) 40–49
+     5) 50–59        6) 60–69     7) 70 or over
+
+================================================================================
+[GOVERNMENT PERFORMANCE EVALUATION]
+================================================================================
+
+Q1.  Do you think President Lee Jae-myung is doing a good job as president,
+     or a poor job?
+
+     1. Doing very well
+     2. Doing fairly well
+     3. Doing fairly poorly
+     4. Doing very poorly
+     9. [Do not read] Don't know / No response
+
+================================================================================
+[GOVERNMENT TRUST]
+================================================================================
+
+Q2.  Do you trust President Lee Jae-myung's administration,
+     or do you not trust it?
+
+     1. Trust very much
+     2. Trust somewhat
+     3. Do not trust much
+     4. Do not trust at all
+     9. [Do not read] Don't know / No response
+
+================================================================================
+[KEY POLICY EVALUATION (1)]
+================================================================================
+
+Q3.  Do you think the Lee Jae-myung government is doing well or poorly on
+     [specific policy in the table row]?
+     (Sub-items 3-1 through 3-5 are randomized)
+
+                                        Very    Fairly  Fairly  Very    Don't
+                                        well    well    poorly  poorly  know
+     3-1. North Korea policy
+          (nuclear response, etc.)        1       2       3       4       9
+
+     3-2. Foreign policy
+          (US, China, Japan, etc.)        1       2       3       4       9
+
+     3-3. Real estate policy
+          (housing price stabilization)   1       2       3       4       9
+
+     3-4. Economic policy
+          (price stability, job creation) 1       2       3       4       9
+
+     3-5. Welfare policy
+          (protection of the vulnerable)  1       2       3       4       9
+
+================================================================================
+[KEY POLICY EVALUATION (2)]
+================================================================================
+
+Q4.  From the following policies, please select up to 2 that you think the
+     Lee Jae-myung government is doing well.
+     (Options 1–5 randomized)
+
+     1. North Korea policy
+     2. Foreign policy
+     3. Real estate policy
+     4. Economic policy
+     5. Welfare policy
+     9. [Do not read] Don't know / No response
+
+================================================================================
+DEMOGRAPHIC QUESTIONS
+================================================================================
+
+DQ1. Finally, I have a few more questions for statistical purposes.
+     What is your current occupation?
+
+     1. Management / Executive / Professional
+     2. Office / Technical
+     3. Self-employed
+     4. Service / Sales / Marketing
+     5. Farming / Forestry / Fishing
+     6. Production / Labor
+     7. Homemaker
+     8. Student
+     9. Unemployed / Retired / Other
+     99. [Do not read] Don't know / No response
+
+DQ2. What is your highest level of education?
+
+     1. High school graduate or below
+     2. Some college or above
+     9. [Do not read] Don't know / No response
+
+DQ3. Considering not just your personal income but also assets such as real
+     estate and savings, which economic class do you consider yourself to be in?
+
+     1. Upper        → Upper tier
+     2. Upper-middle → Upper-middle tier
+     3. Middle       → Middle tier
+     4. Lower-middle → Lower-middle tier
+     5. Lower        → Lower tier
+     9. [Do not read] Don't know / No response
+
+DQ4. Which of the following best describes your ideological orientation?
+
+     1. Very progressive
+     2. Somewhat progressive
+     3. Centrist
+     4. Somewhat conservative
+     5. Very conservative
+     9. [Do not read] Don't know / No response
+
+DQ5. How interested are you in politics in general?
+
+     1. Very interested
+     2. Somewhat interested
+     3. Not very interested
+     4. Not interested at all
+     9. [Do not read] Don't know / No response
+
+================================================================================
+[CLOSING SCRIPT]
+================================================================================
+
+Thank you for your responses. Have a great day.

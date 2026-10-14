@@ -1,0 +1,45 @@
+# Agora Call Center (Tokyo Energy) - 与 quick-deploy.sh 配套
+# 不向宿主机发布任何端口（仅 whip-network 内可达 :8080）。
+# 前置网关须与 agora-callcenter-tokyo 同属 whip-network。
+services:
+  callcenter-postgres:
+    image: postgres:16-alpine
+    container_name: callcenter-postgres
+    environment:
+      POSTGRES_USER: callcenter
+      POSTGRES_PASSWORD: callcenter123
+      POSTGRES_DB: callcenter_db
+    volumes:
+      - callcenter-pgdata:/var/lib/postgresql/data
+    networks:
+      - whip-network
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U callcenter -d callcenter_db']
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  agora-callcenter-tokyo:
+    container_name: agora-callcenter-tokyo
+    build:
+      context: ./agora-white-label-callcenter
+      dockerfile: Dockerfile
+      args:
+        VITE_BASE_PATH: ${VITE_BASE_PATH:-/}
+        CACHEBUST: ${CACHEBUST:-1}
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: ${DATABASE_URL:-postgresql+asyncpg://callcenter:callcenter123@callcenter-postgres:5432/callcenter_db}
+    networks:
+      - whip-network
+    depends_on:
+      callcenter-postgres:
+        condition: service_healthy
+
+volumes:
+  callcenter-pgdata:
+
+networks:
+  whip-network:
+    external: true

@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Telephone Survey Methods / 전화 조사 방식 개요 / 电话调查方式概览</title>
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-light: #eff6ff;
+      --border: #e2e8f0;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --tag-green: #dcfce7;
+      --tag-green-text: #166534;
+      --tag-blue: #dbeafe;
+      --tag-blue-text: #1e40af;
+      --tag-orange: #ffedd5;
+      --tag-orange-text: #9a3412;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans KR', 'Noto Sans SC', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+    header {
+      background: var(--primary);
+      color: #fff;
+      padding: 2rem 2rem 1.5rem;
+    }
+    header h1 { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.25rem; }
+    header p { opacity: 0.85; font-size: 0.95rem; }
+    .lang-bar {
+      background: #1d4ed8;
+      padding: 0.6rem 2rem;
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+    .lang-bar span { color: #93c5fd; font-size: 0.8rem; margin-right: 0.5rem; }
+    .lang-btn {
+      border: 1px solid #93c5fd;
+      background: transparent;
+      color: #fff;
+      padding: 0.25rem 0.9rem;
+      border-radius: 99px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: background 0.15s;
+    }
+    .lang-btn:hover, .lang-btn.active { background: #fff; color: var(--primary); }
+    main { max-width: 960px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+    section { margin-bottom: 2.5rem; }
+    h2 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      border-left: 4px solid var(--primary);
+      padding-left: 0.75rem;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+    h3 { font-size: 1rem; font-weight: 600; margin: 1.25rem 0 0.5rem; color: var(--primary); }
+    p { margin-bottom: 0.75rem; color: var(--text); }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .card-title {
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .badge {
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 0.15rem 0.55rem;
+      border-radius: 99px;
+    }
+    .badge-blue { background: var(--tag-blue); color: var(--tag-blue-text); }
+    .badge-orange { background: var(--tag-orange); color: var(--tag-orange-text); }
+    .badge-green { background: var(--tag-green); color: var(--tag-green-text); }
+    table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    th {
+      background: var(--primary-light);
+      color: var(--primary);
+      font-weight: 600;
+      padding: 0.6rem 0.9rem;
+      text-align: left;
+      border: 1px solid var(--border);
+    }
+    td {
+      padding: 0.55rem 0.9rem;
+      border: 1px solid var(--border);
+      vertical-align: top;
+    }
+    tr:nth-child(even) td { background: #f8fafc; }
+    .flow {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin: 0.75rem 0;
+    }
+    .flow-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+    .flow-line {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 28px;
+    }
+    .flow-dot {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .flow-connector {
+      width: 2px;
+      flex: 1;
+      min-height: 20px;
+      background: #cbd5e1;
+      margin: 2px 0;
+    }
+    .flow-content {
+      padding: 0.3rem 0 0.9rem;
+      flex: 1;
+    }
+    .flow-content strong { display: block; font-size: 0.9rem; }
+    .flow-content span { color: var(--text-muted); font-size: 0.82rem; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } }
+    ul { padding-left: 1.25rem; margin-bottom: 0.5rem; }
+    li { margin-bottom: 0.3rem; font-size: 0.9rem; }
+    code {
+      background: #f1f5f9;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.1rem 0.4rem;
+      font-size: 0.82rem;
+      font-family: 'JetBrains Mono', 'Fira Code', monospace;
+      word-break: break-all;
+    }
+    .highlight-box {
+      background: var(--primary-light);
+      border: 1px solid #bfdbfe;
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      margin: 0.75rem 0;
+      font-size: 0.9rem;
+    }
+    [data-lang] { display: none; }
+    [data-lang].visible { display: block; }
+    footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      padding: 2rem;
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>
+    <span data-lang="zh" class="visible">电话调查方式概览 — NBS 기준지표조사</span>
+    <span data-lang="en">Telephone Survey Methods — NBS 기준지표조사</span>
+    <span data-lang="ko">전화 조사 방식 개요 — NBS 기준지표조사</span>
+  </h1>
+  <p>
+    <span data-lang="zh" class="visible">韩国政治民调电话调查 — 两种采集方式的数据流程文档</span>
+    <span data-lang="en">Korean Political Polling — Two Telephone Survey Methods & Data Pipelines</span>
+    <span data-lang="ko">한국 정치 여론조사 — 두 가지 전화 조사 방식 및 데이터 파이프라인</span>
+  </p>
+</header>
+
+<div class="lang-bar">
+  <span>🌐</span>
+  <button class="lang-btn active" onclick="setLang('zh')">中文</button>
+  <button class="lang-btn" onclick="setLang('en')">English</button>
+  <button class="lang-btn" onclick="setLang('ko')">한국어</button>
+</div>
+
+<main>
+
+  <!-- ── BACKGROUND ── -->
+  <section>
+    <h2>
+      <span data-lang="zh" class="visible">业务背景</span>
+      <span data-lang="en">Background</span>
+      <span data-lang="ko">업무 배경</span>
+    </h2>
+    <div class="card">
+      <div data-lang="zh" class="visible">
+        <p>该公司从事韩国政治民调（NBS — 기준지표조사）的数据采集与分析工作（DA），调查结果用于政治研究报告，定期发布总统支持率、政党支持度、社会议题认知等指标。</p>
+        <p>两种方式均为<strong>电话调查</strong>，由电话面试员与受访者通话并代为录入答案。区别在于问卷的承载形式和系统架构不同：方式一面试员通过URL访问问卷系统操作；方式二通过专用CATI系统统一管理号码名单与配额。</p>
+      </div>
+      <div data-lang="en">
+        <p>The company conducts data collection and analysis (DA) for Korean political polling (NBS — National Barometer Survey). Results are used in political research reports covering presidential approval, party support, and social issue awareness.</p>
+        <p>Both methods are <strong>telephone surveys</strong> conducted by human interviewers who record responses on behalf of respondents. The distinction lies in the system architecture: Method 1 uses a URL-based questionnaire accessed by the interviewer; Method 2 uses a dedicated CATI platform that manages phone lists and quotas centrally.</p>
+      </div>
+      <div data-lang="ko">
+        <p>해당 회사는 한국 정치 여론조사(NBS — 기준지표조사)의 데이터 수집 및 분석(DA) 업무를 수행하며, 조사 결과는 대통령 국정운영 평가, 정당 지지도, 사회 현안 인식 등의 지표를 담은 정치 연구 보고서에 활용됩니다.</p>
+        <p>두 방식 모두 <strong>전화 조사</strong>이며, 면접원이 응답자와 통화하며 대신 입력합니다. 차이점은 시스템 구조에 있습니다: 방식 1은 면접원이 URL로 설문 시스템에 접속하여 진행하고, 방식 2는 전화번호 목록과 쿼터를 통합 관리하는 전용 CATI 플랫폼을 사용합니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── COMPARISON TABLE ── -->
+  <section>
+    <h2>
+      <span data-lang="zh" class="visible">两种方式对比</span>
+      <span data-lang="en">Method Comparison</span>
+      <span data-lang="ko">두 방식 비교</span>
+    </h2>
+    <div style="overflow-x:auto;">
+      <table>
+        <thead>
+          <tr>
+            <th><span data-lang="zh" class="visible">维度</span><span data-lang="en">Dimension</span><span data-lang="ko">구분</span></th>
+            <th><span data-lang="zh" class="visible">方式一：URL接入（面试员代填）</span><span data-lang="en">Method 1: URL-based (interviewer-operated)</span><span data-lang="ko">방식 1: URL 접속 (면접원 대리 입력)</span></th>
+            <th><span data-lang="zh" class="visible">方式二：CATI系统（集中管理）</span><span data-lang="en">Method 2: CATI platform (centrally managed)</span><span data-lang="ko">방식 2: CATI 시스템 (중앙 관리)</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span data-lang="zh" class="visible">问卷载体</span><span data-lang="en">Questionnaire Format</span><span data-lang="ko">설문 형식</span></td>
+            <td><span data-lang="zh" class="visible">HTML 변수가이드（EUC-KR编码）</span><span data-lang="en">HTML Variable Guide (EUC-KR encoded)</span><span data-lang="ko">HTML 변수가이드 (EUC-KR 인코딩)</span></td>
+            <td><span data-lang="zh" class="visible">Word (.docx) 面试员脚本</span><span data-lang="en">Word (.docx) interviewer script</span><span data-lang="ko">Word (.docx) 면접원 스크립트</span></td>
+          </tr>
+          <tr>
+            <td><span data-lang="zh" class="visible">采集平台</span><span data-lang="en">Platform</span><span data-lang="ko">플랫폼</span></td>
+            <td>OQD System</td>
+            <td><code>cati.panel.co.kr</code></td>
+          </tr>
+          <tr>
+            <td><span data-lang="zh" class="visible">采集方式</span><span data-lang="en">Data Collection</span><span data-lang="ko">수집 방식</span></td>
+            <td><span data-lang="zh" class="visible">面试员通过URL访问问卷系统，电话采访并代为录入</span><span data-lang="en">Interviewer accesses survey via URL, conducts phone interview and inputs answers</span><span data-lang="ko">면접원이 URL로 설문 시스템 접속 후 전화 인터뷰 진행 및 대리 입력</span></td>
+            <td><span data-lang="zh" class="visible">面试员在CATI系统内操作，系统自动分配号码并控制配额</span><span data-lang="en">Interviewer works within CATI platform; system auto-assigns numbers and controls quota</span><span data-lang="ko">면접원이 CATI 시스템 내에서 진행; 시스템이 번호 자동 배정 및 쿼터 제어</span></td>
+          </tr>
+          <tr>
+            <td><span data-lang="zh" class="visible">样本来源</span><span data-lang="en">Sample Source</span><span data-lang="ko">표본 출처</span></td>
+            <td><span data-lang="zh" class="visible">在线面板（Embrain / HRC）</span><span data-lang="en">Online panel (Embrain / HRC)</span><span data-lang="ko">온라인 패널 (Embrain / HRC)</span></td>
+            <td><span data-lang="zh" class="visible">预制电话号码名单（Cati_KoraGetList）</span><span data-lang="en">Pre-built phone list (Cati_KoraGetList)</span><span data-lang="ko">사전 구축 전화번호 목록 (Cati_KoraGetList)</span></td>
+          </tr>
+          <tr>
+            <td><span data-lang="zh" class="visible">配额管理</span><span data-lang="en">Quota Management</span><span data-lang="ko">쿼터 관리</span></td>
+            <td><span data-lang="zh" class="visible">事后 SPSS 加权（WT变量）</span><span data-lang="en">Post-hoc SPSS weighting (WT variable)</span><span data-lang="ko">사후 SPSS 가중치 처리 (WT 변수)</span></td>
+            <td><span data-lang="zh" class="visible">系统实时拦截（满额→콜로그 code=8）</span><span data-lang="en">Real-time DB lock (quota full → call log code=8)</span><span data-lang="ko">실시간 DB 차단 (쿼터 초과 → 콜로그 코드=8)</span></td>
+          </tr>
+          <tr>
+            <td><span data-lang="zh" class="visible">跳转逻辑标注</span><span data-lang="en">Routing Notation</span><span data-lang="ko">문항 이동 표기</span></td>
+            <td><code>&lt;!--→문5--&gt;</code> HTML注释</td>
+            <td><code>[PROG. 문4로 이동]</code> 明文指令</td>
+          </tr>
+          <tr>
+            <td><span data-lang="zh" class="visible">数据分析工具</span><span data-lang="en">Analysis Toolchain</span><span data-lang="ko">분석 도구</span></td>
+            <td>SPSS (.sps + .sav → .xls)</td>
+            <td><span data-lang="zh" class="visible">CATI系统数据库（SQL Server）</span><span data-lang="en">CATI system database (SQL Server)</span><span data-lang="ko">CATI 시스템 DB (SQL Server)</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ── METHOD 1 ── -->
+  <section>
+    <h2>
+      <span data-lang="zh" class="visible">方式一：URL接入电话调查（OQD）</span>
+      <span data-lang="en">Method 1: URL-Based Telephone Survey (OQD)</span>
+      <span data-lang="ko">방식 1: URL 접속 전화 조사 (OQD)</span>
+    </h2>
+
+    <div class="highlight-box">
+      <span data-lang="zh" class="visible">代表项目：NBS 113차，SurveyID = 125016，受访者 1001 人</span>
+      <span data-lang="en">Reference project: NBS 113th wave, SurveyID = 125016, n = 1,001</span>
+      <span data-lang="ko">대표 프로젝트: NBS 113차, SurveyID = 125016, 응답자 수 = 1,001명</span>
+    </div>
+
+    <h3>
+      <span data-lang="zh" class="visible">文件结构</span>
+      <span data-lang="en">File Structure</span>
+      <span data-lang="ko">파일 구조</span>
+    </h3>
+    <div style="overflow-x:auto;">
+      <table>
+        <thead>
+          <tr>
+            <th><span data-lang="zh" class="visible">文件</span><span data-lang="en">File</span><span data-lang="ko">파일</span></th>
+            <th><span data-lang="zh" class="visible">格式</span><span data-lang="en">Format</span><span data-lang="ko">형식</span></th>
+            <th><span data-lang="zh" class="visible">作用</span><span data-lang="en">Role</span><span data-lang="ko">역할</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>125016_변수가이드.html</code></td>
+            <td>HTML</td>
+            <td><span data-lang="zh" class="visible">变量定义手册，EUC-KR 编码，OQD平台生成</span><span data-lang="en">Variable definition guide, EUC-KR, generated by OQD</span><span data-lang="ko">변수 정의 가이드, EUC-KR, OQD 생성</span></td>
+          </tr>
+          <tr>
+            <td><code>ver2.sav</code></td>
+            <td>SPSS</td>
+            <td><span data-lang="zh" class="visible">原始数据，1001人 × 98变量列</span><span data-lang="en">Raw data, 1,001 respondents × 98 variable columns</span><span data-lang="ko">원시 데이터, 1,001명 × 98개 변수</span></td>
+          </tr>
+          <tr>
+            <td><code>command.sps</code></td>
+            <td>SPSS Script</td>
+            <td><span data-lang="zh" class="visible">数据清洗、重命名、加权、Banner变量生成</span><span data-lang="en">Cleaning, renaming, weighting, banner variable creation</span><span data-lang="ko">데이터 정제, 변수명 변경, 가중, 배너 변수 생성</span></td>
+          </tr>
+          <tr>
+            <td><code>table.sps</code></td>
+            <td>SPSS Script</td>
+            <td><span data-lang="zh" class="visible">交叉频次表输出</span><span data-lang="en">Cross-tabulation output</span><span data-lang="ko">교차 빈도표 출력</span></td>
+          </tr>
+          <tr>
+            <td><code>Table_0110(모비율 적용 전).xls</code></td>
+            <td>Excel</td>
+            <td><span data-lang="zh" class="visible">加权前频次交叉表（最终报告用）</span><span data-lang="en">Pre-weighted frequency tables (final report)</span><span data-lang="ko">가중 전 빈도 교차표 (최종 보고용)</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>
+      <span data-lang="zh" class="visible">数据处理流程</span>
+      <span data-lang="en">Data Pipeline</span>
+      <span data-lang="ko">데이터 처리 파이프라인</span>
+    </h3>
+    <div class="card">
+      <div class="flow">
+        <div class="flow-step">
+          <div class="flow-line"><div class="flow-dot">1</div><div class="flow-connector"></div></div>
+          <div class="flow-content">
+            <strong><span data-lang="zh" class="visible">问卷设计</span><span data-lang="en">Questionnaire Design</span><span data-lang="ko">설문 설계</span></strong>
+            <span><span data-lang="zh" class="visible">변수가이드.html 定义所有变量名和选项编码（OQD平台）</span><span data-lang="en">변수가이드.html defines all variable names and option codes (OQD platform)</span><span data-lang="ko">변수가이드.html에서 모든 변수명 및 보기 코드 정의 (OQD 플랫폼)</span></span>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-line"><div class="flow-dot">2</div><div class="flow-connector"></div></div>
+          <div class="flow-content">
+            <strong><span data-lang="zh" class="visible">电话采集（双调查公司）</span><span data-lang="en">Telephone Collection (two agencies)</span><span data-lang="ko">전화 수집 (두 조사 기관)</span></strong>
+            <span><span data-lang="zh" class="visible">Embrain (RLAB=4) + HRC (RLAB=3) 面试员各自通过URL电话采访，完成后合并，共 1001 人</span><span data-lang="en">Embrain (RLAB=4) + HRC (RLAB=3) interviewers each access URL and conduct phone interviews; merged to 1,001</span><span data-lang="ko">엠브레인 (RLAB=4) + HRC (RLAB=3) 면접원이 각각 URL 접속 후 전화 인터뷰 진행, 합산 후 총 1,001명</span></span>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-line"><div class="flow-dot">3</div><div class="flow-connector"></div></div>
+          <div class="flow-content">
+            <strong><span data-lang="zh" class="visible">command.sps 数据处理</span><span data-lang="en">command.sps Processing</span><span data-lang="ko">command.sps 데이터 처리</span></strong>
+            <span>
+              <span data-lang="zh" class="visible">① 变量重命名 (v5→Q1, v7→Q3…)　② 年龄分组 (실제나이→SQ3)　③ 编码统一 (불지도=9)　④ 政党追问合并 (Q3+Q3_1→tQ3)　⑤ 配额检查　⑥ 计算加权值 WT　⑦ 生成15个 Banner 分组变量</span>
+              <span data-lang="en">① Rename vars (v5→Q1, v7→Q3…) ② Age grouping ③ Recode DK to 9 ④ Party follow-up merge (Q3+Q3_1→tQ3) ⑤ Quota check ⑥ Compute weight WT ⑦ Create 15 banner variables</span>
+              <span data-lang="ko">① 변수명 변경 (v5→Q1, v7→Q3…) ② 연령 그룹화 ③ 모름=9 리코드 ④ 정당 추가문항 통합 (Q3+Q3_1→tQ3) ⑤ 쿼터 확인 ⑥ 가중치(WT) 산출 ⑦ 배너 변수 15개 생성</span>
+            </span>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-line"><div class="flow-dot">4</div><div class="flow-connector"></div></div>
+          <div class="flow-content">
+            <strong><span data-lang="zh" class="visible">table.sps 制表输出</span><span data-lang="en">table.sps Tabulation</span><span data-lang="ko">table.sps 표 출력</span></strong>
+            <span><span data-lang="zh" class="visible">每道题 × 15个Banner → 频次+百分比交叉表</span><span data-lang="en">Each question × 15 banners → frequency + percentage cross-tabs</span><span data-lang="ko">각 문항 × 15개 배너 → 빈도+백분율 교차표</span></span>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-line"><div class="flow-dot">5</div></div>
+          <div class="flow-content">
+            <strong><span data-lang="zh" class="visible">输出 Table_0110.xls</span><span data-lang="en">Output: Table_0110.xls</span><span data-lang="ko">출력: Table_0110.xls</span></strong>
+            <span><span data-lang="zh" class="visible">加权前最终报告表（含目录Sheet + 表格Sheet，共18张表）</span><span data-lang="en">Pre-weighted final report (index sheet + table sheet, 18 tables total)</span><span data-lang="ko">가중 전 최종 보고서 (목차 시트 + 표 시트, 총 18개 표)</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3>
+      <span data-lang="zh" class="visible">问卷结构与跳转逻辑</span>
+      <span data-lang="en">Questionnaire Structure & Routing</span>
+      <span data-lang="ko">설문 구조 및 문항 이동 로직</span>
+    </h3>
+    <div class="two-col">
+      <div class="card">
+        <div class="card-title"><span class="badge badge-blue">SQ</span> <span data-lang="zh" class="visible">筛选题</span><span data-lang="en">Screener Questions</span><span data-lang="ko">선별 문항</span></div>
+        <ul>
+          <li>SQ1 / <code>v1</code> — <span data-lang="zh" class="visible">居住地区（17选项）</span><span data-lang="en">Region (17 options)</span><span data-lang="ko">거주 지역 (17개)</span></li>
+          <li>SQ2 / <code>gender</code> — <span data-lang="zh" class="visible">性别</span><span data-lang="en">Gender</span><span data-lang="ko">성별</span></li>
+          <li>SQ3 / <code>v3</code> — <span data-lang="zh" class="visible">年龄（实填，后分组）</span><span data-lang="en">Age (raw input, grouped later)</span><span data-lang="ko">연령 (직접 입력 후 그룹화)</span></li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="badge badge-green">DQ</span> <span data-lang="zh" class="visible">人口统计题（变为Banner维度）</span><span data-lang="en">Demographic Questions (become banner variables)</span><span data-lang="ko">인구통계 문항 (배너 변수로 변환)</span></div>
+        <ul>
+          <li>DQ1 / <code>v20</code> — <span data-lang="zh" class="visible">职业</span><span data-lang="en">Occupation</span><span data-lang="ko">직업</span></li>
+          <li>DQ2 / <code>v21</code> — <span data-lang="zh" class="visible">学历</span><span data-lang="en">Education</span><span data-lang="ko">학력</span></li>
+          <li>DQ3 / <code>v22</code> — <span data-lang="zh" class="visible">经济阶层</span><span data-lang="en">Economic class</span><span data-lang="ko">경제적 계층</span></li>
+          <li>DQ4 / <code>v23</code> — <span data-lang="zh" class="visible">意识形态</span><span data-lang="en">Political ideology</span><span data-lang="ko">이념 성향</span></li>
+          <li>DQ5 / <code>v24</code> — <span data-lang="zh" class="visible">政治关心度</span><span data-lang="en">Political interest</span><span data-lang="ko">정치 관심도</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title"><span class="badge badge-orange">ROUTING</span> <span data-lang="zh" class="visible">唯一跳转逻辑（文3）</span><span data-lang="en">Only routing logic (Q3)</span><span data-lang="ko">유일한 이동 로직 (문3)</span></div>
+      <div data-lang="zh" class="visible">
+        <p>문3（政党支持）选项里直接用 HTML 注释标注跳转目标：</p>
+        <ul>
+          <li>选 민주당 / 국민의힘 / 정의당 / 기타정당 → <code>&lt;!--→ 문5--&gt;</code>（跳过문4）</li>
+          <li>选 无支持 / 不知道 → <code>&lt;!--→ 문4-1--&gt;</code> → 进入문3-1追问，再到문5</li>
+        </ul>
+      </div>
+      <div data-lang="en">
+        <p>Q3 (party support) embeds routing directly as HTML comments:</p>
+        <ul>
+          <li>민주당 / 국민의힘 / 정의당 / other party → <code>&lt;!--→ 문5--&gt;</code> (skip Q3-1)</li>
+          <li>No support / DK → <code>&lt;!--→ 문4-1--&gt;</code> → Q3-1 follow-up → Q5</li>
+        </ul>
+      </div>
+      <div data-lang="ko">
+        <p>문3(정당 지지)의 보기에 HTML 주석으로 이동 경로가 직접 표기됩니다:</p>
+        <ul>
+          <li>민주당 / 국민의힘 / 정의당 / 기타정당 → <code>&lt;!--→ 문5--&gt;</code> (문3-1 건너뜀)</li>
+          <li>없음 / 모름 → <code>&lt;!--→ 문4-1--&gt;</code> → 문3-1 추가 질문 → 문5</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── METHOD 2 ── -->
+  <section>
+    <h2>
+      <span data-lang="zh" class="visible">方式二：电话调查（CATI）</span>
+      <span data-lang="en">Method 2: Telephone Survey (CATI)</span>
+      <span data-lang="ko">방식 2: 전화 조사 (CATI)</span>
+    </h2>
+
+    <div class="highlight-box">
+      <span data-lang="zh" class="visible">代表项目：仁川西区名称变更认知调查，SurveyID = 147802，目标 720 人（3地区 × 2性别 × 6年龄 × 各20）</span>
+      <span data-lang="en">Reference project: Incheon Seo-gu Name Change Survey, SurveyID = 147802, target n = 720 (3 regions × 2 genders × 6 age groups × 20 each)</span>
+      <span data-lang="ko">대표 프로젝트: 인천 서구 명칭 변경 인식 조사, SurveyID = 147802, 목표 720명 (3지역 × 2성별 × 6연령 × 각 20명)</span>
+    </div>
+
+    <h3>
+      <span data-lang="zh" class="visible">文件结构</span>
+      <span data-lang="en">File Structure</span>
+      <span data-lang="ko">파일 구조</span>
+    </h3>
+    <div style="overflow-x:auto;">
+      <table>
+        <thead>
+          <tr>
+            <th><span data-lang="zh" class="visible">文件</span><span data-lang="en">File</span><span data-lang="ko">파일</span></th>
+            <th><span data-lang="zh" class="visible">格式</span><span data-lang="en">Format</span><span data-lang="ko">형식</span></th>
+            <th><span data-lang="zh" class="visible">作用</span><span data-lang="en">Role</span><span data-lang="ko">역할</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>설문지.docx</code></td>
+            <td>Word</td>
+            <td><span data-lang="zh" class="visible">面试员操作脚本，含 [PROG.] 系统指令和终止语</span><span data-lang="en">Interviewer script with [PROG.] routing instructions and termination messages</span><span data-lang="ko">면접원 운용 스크립트, [PROG.] 시스템 지시 및 종료 멘트 포함</span></td>
+          </tr>
+          <tr>
+            <td><code>테스트 링크.txt</code></td>
+            <td>Text</td>
+            <td><span data-lang="zh" class="visible">CATI系统测试入口URL，panel_id=8位字母数字可重复测试</span><span data-lang="en">CATI test URL; replace panel_id with any 8-char alphanumeric for repeated testing</span><span data-lang="ko">CATI 테스트 URL; panel_id를 8자리 문자+숫자로 교체하여 반복 테스트 가능</span></td>
+          </tr>
+          <tr>
+            <td><code>AI콜센터_자료.xlsx</code></td>
+            <td>Excel</td>
+            <td><span data-lang="zh" class="visible">5个Sheet：配额表SQL / 配额样本数据 / 号码名单SQL / 号码名单样本 / 呼叫结果代码</span><span data-lang="en">5 sheets: Quota table SQL / quota sample data / phone list SQL / phone list sample / call log codes</span><span data-lang="ko">5개 시트: 쿼터 테이블 SQL / 쿼터 샘플 데이터 / 리스트 테이블 SQL / 리스트 샘플 데이터 / 콜 로그</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>
+      <span data-lang="zh" class="visible">数据库结构（SQL Server）</span>
+      <span data-lang="en">Database Schema (SQL Server)</span>
+      <span data-lang="ko">데이터베이스 구조 (SQL Server)</span>
+    </h3>
+    <div class="two-col">
+      <div class="card">
+        <div class="card-title"><code>Cati_Quota</code></div>
+        <ul>
+          <li><code>SurveyID</code>, <code>QuotaID</code></li>
+          <li><code>Area</code> / <code>Area_Name</code></li>
+          <li><code>Gender</code> / <code>Gender_Name</code></li>
+          <li><code>Age</code> / <code>Age_Name</code></li>
+          <li><code>Quota</code> — <span data-lang="zh" class="visible">目标数</span><span data-lang="en">target count</span><span data-lang="ko">목표 수</span></li>
+          <li><code>comCNT</code> — <span data-lang="zh" class="visible">已完成数（实时更新）</span><span data-lang="en">completed count (real-time)</span><span data-lang="ko">완료 수 (실시간 업데이트)</span></li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title"><code>Cati_KoraGetList</code></div>
+        <ul>
+          <li><code>SurveyID</code>, <code>Tel_Type</code></li>
+          <li><code>PID</code> — <span data-lang="zh" class="visible">受访者ID</span><span data-lang="en">respondent ID</span><span data-lang="ko">응답자 ID</span></li>
+          <li><code>Tel_Kora</code> — <span data-lang="zh" class="visible">电话号码</span><span data-lang="en">phone number</span><span data-lang="ko">전화번호</span></li>
+          <li><code>Area_Code</code> / <code>Gender</code> / <code>Age</code></li>
+          <li><code>sort_no</code> — <span data-lang="zh" class="visible">拨打顺序</span><span data-lang="en">dial order</span><span data-lang="ko">발신 순서</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>
+      <span data-lang="zh" class="visible">呼叫结果代码（콜로그）</span>
+      <span data-lang="en">Call Log Codes</span>
+      <span data-lang="ko">콜 로그 코드</span>
+    </h3>
+    <div class="card">
+      <div style="display:flex; flex-wrap:wrap; gap:0.5rem; font-size:0.85rem;">
+        <span><code>0</code> <span data-lang="zh" class="visible">调查成功</span><span data-lang="en">Success</span><span data-lang="ko">조사 성공</span></span> ·
+        <span><code>1</code> <span data-lang="zh" class="visible">空号</span><span data-lang="en">Invalid number</span><span data-lang="ko">결번</span></span> ·
+        <span><code>2</code> <span data-lang="zh" class="visible">企业/传真</span><span data-lang="en">Business/fax</span><span data-lang="ko">기업체/FAX</span></span> ·
+        <span><code>3</code> <span data-lang="zh" class="visible">强力拒绝</span><span data-lang="en">Hard refusal</span><span data-lang="ko">강력 거절</span></span> ·
+        <span><code>4</code> <span data-lang="zh" class="visible">拒绝</span><span data-lang="en">Refusal</span><span data-lang="ko">거절</span></span> ·
+        <span><code>5</code> <span data-lang="zh" class="visible">未接听</span><span data-lang="en">No answer</span><span data-lang="ko">비수신</span></span> ·
+        <span><code>6</code> <span data-lang="zh" class="visible">占线</span><span data-lang="en">Busy</span><span data-lang="ko">통화 중</span></span> ·
+        <span><code>7</code> <span data-lang="zh" class="visible">不符合对象</span><span data-lang="en">Ineligible</span><span data-lang="ko">대상 아님</span></span> ·
+        <span><code>8</code> <span data-lang="zh" class="visible">配额已满</span><span data-lang="en">Quota full</span><span data-lang="ko">쿼터 초과</span></span> ·
+        <span><code>9</code> <span data-lang="zh" class="visible">中途放弃</span><span data-lang="en">Break-off</span><span data-lang="ko">중도 포기</span></span>
+      </div>
+    </div>
+
+    <h3>
+      <span data-lang="zh" class="visible">问卷结构与跳转逻辑</span>
+      <span data-lang="en">Questionnaire Structure & Routing</span>
+      <span data-lang="ko">설문 구조 및 문항 이동 로직</span>
+    </h3>
+    <div class="card">
+      <div class="card-title"><span class="badge badge-orange">ROUTING</span> <span data-lang="zh" class="visible">跳转逻辑（[PROG.] 明文指令）</span><span data-lang="en">Routing via [PROG.] directives</span><span data-lang="ko">[PROG.] 명령어를 통한 문항 이동</span></div>
+      <div style="overflow-x:auto;">
+        <table>
+          <thead>
+            <tr>
+              <th><span data-lang="zh" class="visible">条件</span><span data-lang="en">Condition</span><span data-lang="ko">조건</span></th>
+              <th><span data-lang="zh" class="visible">结果</span><span data-lang="en">Result</span><span data-lang="ko">결과</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>SQ1 = ② (<span data-lang="zh" class="visible">非西区居民</span><span data-lang="en">not Seo-gu resident</span><span data-lang="ko">서구 비거주자</span>)</td>
+              <td><span data-lang="zh" class="visible">终止调查（专属终止语）</span><span data-lang="en">Terminate (custom message)</span><span data-lang="ko">조사 종료 (전용 멘트)</span></td>
+            </tr>
+            <tr>
+              <td>SQ3 = ① (<span data-lang="zh" class="visible">18岁以下</span><span data-lang="en">under 18</span><span data-lang="ko">만 18세 미만</span>)</td>
+              <td><span data-lang="zh" class="visible">终止调查</span><span data-lang="en">Terminate</span><span data-lang="ko">조사 종료</span></td>
+            </tr>
+            <tr>
+              <td>SQ1-1 = 99 (<span data-lang="zh" class="visible">检单区所属동</span><span data-lang="en">Geomdan-gu dong</span><span data-lang="ko">검단구 소속 동</span>)</td>
+              <td><span data-lang="zh" class="visible">终止（分区后属检单区）</span><span data-lang="en">Terminate (future Geomdan-gu area)</span><span data-lang="ko">종료 (분구 후 검단구 지역)</span></td>
+            </tr>
+            <tr>
+              <td>문3 = ①② (<span data-lang="zh" class="visible">知道名称变更</span><span data-lang="en">Aware of name change</span><span data-lang="ko">명칭 변경 인지)</span>)</td>
+              <td>[PROG. 문4로 이동]</td>
+            </tr>
+            <tr>
+              <td>문3 = ③ (<span data-lang="zh" class="visible">不知道</span><span data-lang="en">Unaware</span><span data-lang="ko">모름</span>)</td>
+              <td>[PROG. 문5로 이동] (<span data-lang="zh" class="visible">跳过문4</span><span data-lang="en">skip Q4</span><span data-lang="ko">문4 건너뜀</span>)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <h3>
+      <span data-lang="zh" class="visible">测试方式</span>
+      <span data-lang="en">Testing</span>
+      <span data-lang="ko">테스트 방법</span>
+    </h3>
+    <div class="card">
+      <p style="font-size:0.85rem; margin-bottom:0.5rem;">
+        <span data-lang="zh" class="visible">访问以下URL，将 <code>xxxxxxxx</code> 替换为任意8位字母数字即可重复测试：</span>
+        <span data-lang="en">Access the URL below, replacing <code>xxxxxxxx</code> with any 8-char alphanumeric string to repeat tests:</span>
+        <span data-lang="ko">아래 URL에서 <code>xxxxxxxx</code>를 임의의 8자리 문자+숫자로 교체하면 반복 테스트 가능:</span>
+      </p>
+      <code>https://cati.panel.co.kr/2026/147802/start.asp?testFlag=y&amp;surveyID=147802&amp;panel_id=xxxxxxxx</code>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  NBS 기준지표조사 — DA Documentation &nbsp;·&nbsp; Generated 2026-04-01
+</footer>
+
+<script>
+  function setLang(lang) {
+    document.querySelectorAll('[data-lang]').forEach(el => {
+      el.classList.toggle('visible', el.dataset.lang === lang);
+    });
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.textContent.trim() === ({zh:'中文', en:'English', ko:'한국어'}[lang]));
+    });
+    document.documentElement.lang = lang;
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+# ── Python ───────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Database (dev only)
+backend/dev.db
+backend/*.db
+
+# Environment variables
+backend/.env
+backend/.env.md
+.env
+.env.local
+.env.*.local
+
+# ── Node / Frontend ───────────────────────────────────────────────
+node_modules/
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# ── OS ───────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# ── IDE ──────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.iml
+
+# ── Logs ─────────────────────────────────────────────────────────
+*.log
+npm-debug.log*
+
+# ── Misc ─────────────────────────────────────────────────────────
+*.orig
+*.rej
+.cache/
