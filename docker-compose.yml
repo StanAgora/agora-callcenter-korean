@@ -1,10 +1,10 @@
-# Agora Call Center (Tokyo Energy) - 与 quick-deploy.sh 配套
+# Agora Call Center (Korean) - 与 quick-deploy.sh 配套
 # 不向宿主机发布任何端口（仅 whip-network 内可达 :8080）。
-# 前置网关须与 agora-callcenter-tokyo 同属 whip-network。
+# 前置网关须与 agora-callcenter-korean 同属 whip-network。
 services:
-  callcenter-postgres:
+  callcenter-postgres-korean:
     image: postgres:16-alpine
-    container_name: callcenter-postgres
+    container_name: callcenter-postgres-korean
     environment:
       POSTGRES_USER: callcenter
       POSTGRES_PASSWORD: callcenter123
@@ -19,8 +19,8 @@ services:
       timeout: 5s
       retries: 10
 
-  agora-callcenter-tokyo:
-    container_name: agora-callcenter-tokyo
+  agora-callcenter-korean:
+    container_name: agora-callcenter-korean
     build:
       context: ./agora-white-label-callcenter
       dockerfile: Dockerfile
@@ -30,11 +30,11 @@ services:
     env_file:
       - .env
     environment:
-      DATABASE_URL: ${DATABASE_URL:-postgresql+asyncpg://callcenter:callcenter123@callcenter-postgres:5432/callcenter_db}
+      DATABASE_URL: ${DATABASE_URL:-postgresql+asyncpg://callcenter:callcenter123@callcenter-postgres-korean:5432/callcenter_db}
     networks:
       - whip-network
     depends_on:
-      callcenter-postgres:
+      callcenter-postgres-korean:
         condition: service_healthy
 
 volumes:
