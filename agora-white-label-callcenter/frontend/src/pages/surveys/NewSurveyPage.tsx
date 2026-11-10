@@ -6,7 +6,7 @@ import {
   Upload, FileSpreadsheet, Globe, Brain, Pencil, Plus, Trash2, Bot,
   CheckCircle2, Phone, AlertCircle, Download, Loader2, Sparkles,
   RefreshCw, AlignJustify, LayoutList, ChevronDown, Mic, VolumeX,
-  Wand2, Info, X, Settings2,
+  Wand2, Info, X, Settings2, Clock,
 } from 'lucide-react'
 import { cn } from '../../lib/utils'
 import { API } from '../../lib/api'
@@ -269,9 +269,10 @@ function parseCsv(text: string, t: TFunction): CsvResult {
 }
 
 // ── Step indicator config ─────────────────────────────────────────────────────
-// Internal steps: 1=Basic Info, 2=Questionnaire, 3=AI Prompt (file only), 4=Quota Setup, 5=Call Analysis, 6=Phone List
-const FILE_STEPS  = [1, 2, 3, 4, 5, 6] as const
-const URL_STEPS   = [1, 2, 4, 5, 6]    as const
+// Internal steps: 1=Basic Info, 2=Questionnaire, 3=AI Prompt (file only), 4=Quota Setup, 5=Call Analysis, 6=End Call Config, 7=Phone List
+type WizardStep = 1 | 2 | 3 | 4 | 5 | 6 | 7
+const FILE_STEPS  = [1, 2, 3, 4, 5, 6, 7] as const
+const URL_STEPS   = [1, 2, 4, 5, 6, 7]    as const
 
 // ── QuotaCellTable sub-component ─────────────────────────────────────────────
 function QuotaCellTable({
@@ -370,11 +371,11 @@ function QuotaCellTable({
 export function NewSurveyPage() {
   const { t, i18n } = useTranslation()
   const navigate   = useNavigate()
-  const stepName = useCallback((s: 1 | 2 | 3 | 4 | 5 | 6) => {
-    const m = { 1: 'nc_wiz.step_1', 2: 'nc_wiz.step_2', 3: 'nc_wiz.step_3', 4: 'nc_wiz.step_4', 5: 'nc_wiz.step_5', 6: 'nc_wiz.step_6' } as const
+  const stepName = useCallback((s: WizardStep) => {
+    const m = { 1: 'nc_wiz.step_1', 2: 'nc_wiz.step_2', 3: 'nc_wiz.step_3', 4: 'nc_wiz.step_4', 5: 'nc_wiz.step_5', 6: 'contracts.ec_section', 7: 'nc_wiz.step_6' } as const
     return t(m[s])
   }, [t, i18n.language])
-  const [step, setStep]         = useState<1 | 2 | 3 | 4 | 5 | 6>(1)
+  const [step, setStep]         = useState<WizardStep>(1)
   const [campaignName, setCampaignName] = useState('')
   const [uploadMethod, setUploadMethod] = useState<UploadMethod>('file_upload')
 
@@ -447,6 +448,15 @@ export function NewSurveyPage() {
   const [soCriteria,   setSoCriteria]   = useState('')
   const [customEvals,  setCustomEvals]  = useState<CustomEvalSOEval[]>([])
 
+  // End Call Config — preserve the existing New Campaign defaults.
+  const [ecMaxDuration, setEcMaxDuration] = useState(600)
+  const [ecSilenceTimeout, setEcSilenceTimeout] = useState(600)
+  const [ecRingTimeout, setEcRingTimeout] = useState(30)
+  const [ecOnSilenceTimeout, setEcOnSilenceTimeout] = useState(true)
+  const [ecOnUserRequest, setEcOnUserRequest] = useState(true)
+  const [ecOnAiAssistant, setEcOnAiAssistant] = useState(true)
+  const [ecOnVoicemail, setEcOnVoicemail] = useState(false)
+
   function addCustomEval() {
     setCustomEvals(prev => [...prev, { variable_name: '', type: 'string', criteria: '', enums: [], _draft: '' }])
   }
@@ -500,9 +510,9 @@ export function NewSurveyPage() {
   const isNewAgent = selectedAgentId === '__new__'
 
   // Navigation helpers
-  const visibleSteps = isNewAgent
+  const visibleSteps: readonly WizardStep[] = isNewAgent
     ? (uploadMethod === 'file_upload' ? FILE_STEPS : URL_STEPS)
-    : ([1, 4, 5, 6] as const)
+    : ([1, 4, 5, 6, 7] as const)
 
   const nextFromStep1 = () => isNewAgent ? setStep(2) : setStep(4)
 
@@ -769,12 +779,13 @@ export function NewSurveyPage() {
           dial_tasks:         csvResult.tasks.map(row => ({ phone_number: row.phone_number })),
           start_immediately:  true,
           end_call_config: {
-            max_call_duration_seconds:    600,
-            silence_timeout_seconds:      600,
-            end_call_on_silence_timeout:  true,
-            ring_timeout_seconds:         30,
-            end_call_on_user_request:     true,
-            end_call_on_ai_assistant:     true,
+            max_call_duration_seconds:   ecMaxDuration,
+            silence_timeout_seconds:     ecSilenceTimeout,
+            end_call_on_silence_timeout: ecOnSilenceTimeout,
+            ring_timeout_seconds:        ecRingTimeout,
+            end_call_on_user_request:    ecOnUserRequest,
+            end_call_on_ai_assistant:    ecOnAiAssistant,
+            end_call_on_voicemail:       ecOnVoicemail,
           },
           structured_output: structuredOutput,
           enable_transcript: true,
@@ -838,7 +849,7 @@ export function NewSurveyPage() {
                     'mt-1.5 text-[11px] text-center leading-tight w-14 break-words',
                     current ? 'text-st-txt1 font-medium' : 'text-st-txt3'
                   )}>
-                    {stepName(s as 1 | 2 | 3 | 4 | 5 | 6)}
+                    {stepName(s)}
                   </span>
                 </div>
                 {/* Connector line (not after last item) */}
@@ -1694,8 +1705,79 @@ export function NewSurveyPage() {
         </div>
       )}
 
-      {/* ── Step 6: Phone List ─────────────────────────────────────────────── */}
+      {/* ── Step 6: End Call Config ────────────────────────────────────────── */}
       {step === 6 && (
+        <form
+          onSubmit={e => { e.preventDefault(); setStep(7) }}
+          className="bg-st-nav border border-st-b-sub rounded-lg overflow-hidden"
+        >
+          <div className="p-6 space-y-5">
+            <div className="flex items-center gap-2">
+              <Clock size={18} className="text-st-teal-l" />
+              <h2 className="font-medium text-st-txt1">{t('contracts.ec_section')}</h2>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              {([
+                ['contracts.ec_max_duration_label', ecMaxDuration, setEcMaxDuration],
+                ['contracts.ec_silence_timeout_label', ecSilenceTimeout, setEcSilenceTimeout],
+                ['contracts.ec_ring_timeout_label', ecRingTimeout, setEcRingTimeout],
+              ] as const).map(([key, value, setValue]) => (
+                <label key={key} className="block text-xs text-st-txt3">
+                  <span className="mb-1.5 block">{t(key)}</span>
+                  <input
+                    type="number"
+                    min={0}
+                    step={1}
+                    required
+                    value={Number.isNaN(value) ? '' : value}
+                    onChange={e => setValue(e.target.valueAsNumber)}
+                    className="w-full px-3 py-1.5 rounded-lg text-xs text-st-txt1 bg-st-bg border border-st-b-sub focus:outline-none focus:border-st-b-teal transition-colors"
+                    style={{ colorScheme: 'dark' }}
+                  />
+                </label>
+              ))}
+            </div>
+
+            <div className="border border-st-b-sub rounded-lg divide-y divide-st-b-div overflow-hidden">
+              {([
+                ['contracts.ec_on_silence_timeout', ecOnSilenceTimeout, setEcOnSilenceTimeout],
+                ['contracts.ec_on_user_request', ecOnUserRequest, setEcOnUserRequest],
+                ['contracts.ec_on_ai_assistant', ecOnAiAssistant, setEcOnAiAssistant],
+                ['contracts.ec_on_voicemail', ecOnVoicemail, setEcOnVoicemail],
+              ] as const).map(([key, value, setValue]) => (
+                <button
+                  key={key}
+                  type="button"
+                  role="switch"
+                  aria-checked={value}
+                  onClick={() => setValue(!value)}
+                  className="flex w-full items-center justify-between gap-3 px-3 py-3 text-left bg-st-bg"
+                >
+                  <span className="text-xs text-st-txt2">{t(key)}</span>
+                  <span aria-hidden="true" className={cn('relative inline-flex h-5 w-9 flex-shrink-0 items-center rounded-full transition-colors', value ? 'bg-st-teal' : 'bg-[rgba(255,255,255,0.1)]')}>
+                    <span className={cn('inline-block h-3.5 w-3.5 transform rounded-full bg-white shadow transition-transform', value ? 'translate-x-[18px]' : 'translate-x-0.5')} />
+                  </span>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="flex gap-3 px-6 py-4 border-t border-st-b-sub bg-st-card">
+            <button type="button" onClick={() => setStep(5)}
+              className="flex-1 py-2 bg-transparent border border-st-b-sub text-st-txt2 rounded-lg text-sm font-medium hover:bg-[rgba(255,255,255,0.04)] hover:border-st-b-teal transition-colors">
+              {t('common.prev')}
+            </button>
+            <button type="submit"
+              className="flex-1 py-2 bg-st-teal text-white rounded-lg text-sm font-medium hover:bg-st-teal-h transition-colors">
+              {t('common.next')}
+            </button>
+          </div>
+        </form>
+      )}
+
+      {/* ── Step 7: Phone List ─────────────────────────────────────────────── */}
+      {step === 7 && (
         <div className="bg-st-nav border border-st-b-sub rounded-lg p-6 space-y-5">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
@@ -1771,7 +1853,7 @@ export function NewSurveyPage() {
           )}
 
           <div className="flex gap-3">
-            <button onClick={() => setStep(5)}
+            <button onClick={() => setStep(6)}
               className="flex-1 py-2 bg-transparent border border-st-b-sub text-st-txt2 rounded-lg text-sm font-medium hover:bg-[rgba(255,255,255,0.04)] hover:border-st-b-teal transition-colors">
               {t('common.prev')}
             </button>
